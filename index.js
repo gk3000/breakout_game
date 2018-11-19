@@ -22,7 +22,7 @@ var bricks = [];
 for(var c=0; c<brickColumnCount; c++) {
     bricks[c] = [];
     for(var r=0; r<brickRowCount; r++) {
-        bricks[c][r] = { x: 0, y: 0 };
+        bricks[c][r] = { x: 0, y: 0, status: 1 };
     }
 }
 
@@ -63,6 +63,7 @@ function drawPaddle() {
 function drawBricks() {
     for(var c=0; c<brickColumnCount; c++) {
         for(var r=0; r<brickRowCount; r++) {
+        	if(bricks[c][r].status == 1){
             var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
             var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
             bricks[c][r].x = brickX;
@@ -72,6 +73,7 @@ function drawBricks() {
             ctx.fillStyle = "#0095DD";
             ctx.fill();
             ctx.closePath();
+        	}
         }
     }
 }
