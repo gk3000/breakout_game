@@ -78,6 +78,7 @@ function drawBricks() {
             ctx.closePath();
         	}
         }
+
     }
 }
 
@@ -95,6 +96,11 @@ function collisionDetection() {
                 if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
                     dy = -dy;
                     b.status = 0;
+                    score++;
+					if(score == brickRowCount*brickColumnCount) {
+                        alert("YOU WIN, CONGRATULATIONS!");
+                        document.location.reload();
+
                 }
             }
         }
@@ -108,6 +114,7 @@ function draw() {
     drawBall();
     drawPaddle();
     collisionDetection();
+    drawScore();
     
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
